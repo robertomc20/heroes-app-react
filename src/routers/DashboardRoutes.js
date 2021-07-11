@@ -12,6 +12,7 @@ import { SearchScreen } from '../components/search/SearchScreen';
 
 
 export const DashboardRoutes = () => {
+
     return (
         <>
             <Navbar />
