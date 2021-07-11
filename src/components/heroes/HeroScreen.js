@@ -1,8 +1,16 @@
 import React, { useMemo } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { getHeroById } from '../../selectors/getHeroById';
+import { heroImages } from '../../helpers/heroImages';
+
+// esto lo pasamos a la carpeta helpers, con el fin de reutilizarlo mas facil
+// import batman from '../../assets/heroes/batman.jpg'; esto serviria si seria un recurso estatico
+// esto es propio de webpack, mas info en: https://webpack.js.org/guides/dependency-management/#requirecontext
+// const heroImages = require.context('../../assets/heroes', true);
 
 export const HeroScreen = ({history}) => {
+
+    
 
     //const params = useParams();
     //console.log(params);
@@ -43,7 +51,9 @@ export const HeroScreen = ({history}) => {
         <div className="row mt-5">
             <div className="col-4">
                 <img 
-                    src={ `../assets/heroes/${ heroeId }.jpg` }
+                    // src={ `../assets/heroes/${ heroeId }.jpg` } esto es si esta en public/assets
+                    // src={ batman } esto viene el del import, sirve para recursos estaticos
+                    src={ heroImages(`./${ heroeId }.jpg`).default }
                     alt={ superhero }
                     className="img-thumbnail animate__animated animate__fadeInLeft"
                 />
